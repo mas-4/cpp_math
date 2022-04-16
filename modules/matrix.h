@@ -19,8 +19,11 @@ public:
     {};
 
     Matrix(unsigned int rows, unsigned int cols, double *data)
-            : rows(rows), cols(cols), m_data(data)
-    {};
+            : rows(rows), cols(cols), m_data(new double[rows * cols]{0})
+    {
+        for (unsigned int i = 0; i < rows * cols; i++)
+            m_data[i] = data[i];
+    };
 
     Matrix(const Matrix &other)
             : rows(other.rows),

@@ -25,7 +25,7 @@ bool test_matrix_instantiation_w_data()
     unsigned int rows = 3;
     unsigned int cols = 3;
     bool success = true;
-    double *data = new double[rows * cols]{
+    auto data = new double[rows * cols]{
             1, 2, 3,
             4, 5, 6,
             7, 8, 9
@@ -40,6 +40,7 @@ bool test_matrix_instantiation_w_data()
             success = success && m(i, j) == data[i * cols + j];
         }
     }
+    delete[] data;
     return success;
 }
 
@@ -67,6 +68,8 @@ bool test_matrix_addition() {
             success = success && m3(i, j) == 2 * data[i * cols + j];
         }
     }
+    delete[] data;
+    delete[] data2;
     return success;
 }
 
@@ -94,6 +97,8 @@ bool test_matrix_subtraction() {
             success = success && m3(i, j) == 0;
         }
     }
+    delete[] data;
+    delete[] data2;
     return success;
 }
 
@@ -121,11 +126,34 @@ bool test_matrix_multiplication() {
             success = success && m3(i, j) == data[i * cols + j];
         }
     }
+    delete[] data;
+    delete[] data2;
     return success;
 }
 
-int main()
-{
+bool test_scalar_multiplication() {
+    unsigned int rows = 3;
+    unsigned int cols = 3;
+    bool success = true;
+    auto data = new double[rows * cols]{
+            1, 2, 3,
+            4, 5, 6,
+            7, 8, 9
+    };
+    Matrix m1(rows, cols, data);
+    Matrix m2 = m1 * 2;
+    for (unsigned int i = 0; i < rows; i++)
+    {
+        for (unsigned int j = 0; j < cols; j++)
+        {
+            success = success && m2(i, j) == 2 * data[i * cols + j];
+        }
+    }
+    delete[] data;
+    return success;
+}
+
+void matrix_tests() {
     printf("%s\t\t\t\t%s\n",
            "Matrix instantiation:",
            test_matrix_instantiation () ? "PASS" : "FAIL");
@@ -141,5 +169,13 @@ int main()
     printf("%s\t\t\t\t%s\n",
            "Matrix multiplication:",
            test_matrix_multiplication() ? "PASS" : "FAIL");
+    printf("%s\t\t\t\t%s\n",
+           "Scalar multiplication:",
+           test_scalar_multiplication() ? "PASS" : "FAIL");
+}
+
+int main()
+{
+    matrix_tests();
     return 0;
 }
