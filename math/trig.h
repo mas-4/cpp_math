@@ -5,9 +5,7 @@
 #ifndef MS_MATH_TRIG_H
 #define MS_MATH_TRIG_H
 
-#define modd(x, y) ((x) - (int)((x) / (y)) * (y))
 #define PI 3.14159265358979323846
-#define PI_2 2 * PI
 #define N 10
 
 namespace trig {
