@@ -49,7 +49,8 @@ bool test_matrix_instantiation_w_data()
     return success;
 }
 
-bool test_matrix_addition() {
+bool test_matrix_addition()
+{
     unsigned int rows = 3;
     unsigned int cols = 3;
     bool success = true;
@@ -78,7 +79,8 @@ bool test_matrix_addition() {
     return success;
 }
 
-bool test_matrix_subtraction() {
+bool test_matrix_subtraction()
+{
     unsigned int rows = 3;
     unsigned int cols = 3;
     bool success = true;
@@ -107,7 +109,8 @@ bool test_matrix_subtraction() {
     return success;
 }
 
-bool test_matrix_multiplication() {
+bool test_matrix_multiplication()
+{
     unsigned int rows = 3;
     unsigned int cols = 3;
     bool success = true;
@@ -136,7 +139,8 @@ bool test_matrix_multiplication() {
     return success;
 }
 
-bool test_scalar_multiplication() {
+bool test_scalar_multiplication()
+{
     unsigned int rows = 3;
     unsigned int cols = 3;
     bool success = true;
@@ -158,11 +162,14 @@ bool test_scalar_multiplication() {
     return success;
 }
 
-void matrix_tests() {
+void matrix_tests()
+{
     Printer printer = Printer();
     printer.print_test_suite_name("Matrix tests");
     printer.run_test(test_matrix_instantiation, "Matrix instantiation");
-    printer.run_test(test_matrix_instantiation_w_data, "Matrix instantiation with data");
+    printer.run_test(
+            test_matrix_instantiation_w_data,
+            "Matrix instantiation with data");
     printer.run_test(test_matrix_addition, "Matrix addition");
     printer.run_test(test_matrix_subtraction, "Matrix subtraction");
     printer.run_test(test_matrix_multiplication, "Matrix multiplication");
