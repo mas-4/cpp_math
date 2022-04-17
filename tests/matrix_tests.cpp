@@ -159,11 +159,13 @@ bool test_scalar_multiplication() {
 }
 
 void matrix_tests() {
-    Printer::print_test_suite_name("Matrix tests");
-    Printer::print_test_result(test_matrix_instantiation(), "Matrix instantiation");
-    Printer::print_test_result(test_matrix_instantiation_w_data(), "Matrix instantiation with data");
-    Printer::print_test_result(test_matrix_addition(), "Matrix addition");
-    Printer::print_test_result(test_matrix_subtraction(), "Matrix subtraction");
-    Printer::print_test_result(test_matrix_multiplication(), "Matrix multiplication");
-    Printer::print_test_result(test_scalar_multiplication(), "Scalar multiplication");
+    Printer printer = Printer();
+    printer.print_test_suite_name("Matrix tests");
+    printer.print_test_result(test_matrix_instantiation(), "Matrix " "instantiation");
+    printer.print_test_result(test_matrix_instantiation_w_data(), "Matrix " "instantiation with data");
+    printer.print_test_result(test_matrix_addition(), "Matrix addition");
+    printer.print_test_result(test_matrix_subtraction(), "Matrix " "subtraction");
+    printer.print_test_result(test_matrix_multiplication(), "Matrix " "multiplication");
+    printer.print_test_result(test_scalar_multiplication(), "Scalar " "multiplication");
+    printer.print_suite_result();
 }

@@ -7,14 +7,18 @@
 
 
 class Printer
-        // determines how many tabs to print for a given test name
 {
+private:
+    static Printer *instance;
+    const int width = 80;
+    int m_tests = 0;
+    int m_passed = 0;
 public:
-    static const int width = 80;
-    static void print_spaces(int spaces);
-    static void print_test_suite_name(const char *name);
-    static void print_test_result(bool result);
-    static void print_test_result(bool result, const char *name);
+    void print_spaces(int spaces);
+    void print_test_suite_name(const char *name);
+    void print_test_result(bool result);
+    void print_test_result(bool result, const char *name);
+    void print_suite_result();
 };
 
 #endif //MS_MATH_PRINTER_H

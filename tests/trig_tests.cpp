@@ -23,6 +23,8 @@ bool test_cosine() {
 }
 
 void trig_tests() {
-    Printer::print_test_suite_name("Trig Tests");
-    Printer::print_test_result(test_cosine(), "Cosine");
+    Printer printer = Printer();
+    printer.print_test_suite_name("Trig Tests");
+    printer.print_test_result(test_cosine(), "Cosine");
+    printer.print_suite_result();
 }

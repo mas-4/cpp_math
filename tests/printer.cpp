@@ -22,6 +22,8 @@ void Printer::print_test_result(bool result)
 
 void Printer::print_test_result(bool result, const char *name)
 {
+    m_tests++;
+    m_passed += result;
     std::cout << name;
     // determine # of spaces to print
     int result_len = result ? 2 : 4;
@@ -32,7 +34,7 @@ void Printer::print_test_result(bool result, const char *name)
 
 void Printer::print_test_suite_name(const char *name)
 {
-    int open_spaces = width - strlen(name);
+    int open_spaces = width - (int)strlen(name);
     int stars = open_spaces / 2 - 1;
     for (int i = 0; i < stars; i++)
         std::cout << "*";
@@ -40,4 +42,14 @@ void Printer::print_test_suite_name(const char *name)
     for (int i = 0; i < stars; i++)
         std::cout << "*";
     std::cout << std::endl;
+}
+
+void Printer::print_suite_result()
+{
+    for (int i = 0; i < width; i++)
+        std::cout << "-";
+    std::cout << std::endl;
+    std::cout << "Tests: " << m_tests
+             << " Passed: " << m_passed
+             << " Failed: " << m_tests - m_passed << std::endl;
 }
