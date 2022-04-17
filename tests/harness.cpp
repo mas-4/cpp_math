@@ -2,17 +2,17 @@
 // Created by mas on 4/17/22.
 //
 
-#include "printer.h"
+#include "harness.h"
 #include <iostream>
 #include <cstring>
 
-void Printer::print_spaces(int spaces)
+void Harness::print_spaces(int spaces)
 {
     for (int i = 0; i < spaces; i++)
         std::cout << " ";
 }
 
-void Printer::print_test_result(bool result)
+void Harness::print_test_result(bool result)
 {
     if (result)
         std::cout << "OK" << std::endl;
@@ -20,7 +20,7 @@ void Printer::print_test_result(bool result)
         std::cout << "FAIL" << std::endl;
 }
 
-void Printer::print_test_result(bool result, const char *name)
+void Harness::print_test_result(bool result, const char *name)
 {
     m_tests++;
     m_passed += result;
@@ -32,8 +32,11 @@ void Printer::print_test_result(bool result, const char *name)
     print_test_result(result);
 }
 
-void Printer::print_test_suite_name(const char *name)
+void Harness::print_test_suite_name(const char *name) const
 {
+    for (int i = 0; i < width; i++)
+        std::cout << "*";
+    std::cout << std::endl;
     int open_spaces = width - (int)strlen(name);
     int stars = open_spaces / 2 - 1;
     for (int i = 0; i < stars; i++)
@@ -42,9 +45,12 @@ void Printer::print_test_suite_name(const char *name)
     for (int i = 0; i < stars; i++)
         std::cout << "*";
     std::cout << std::endl;
+    for (int i = 0; i < width; i++)
+        std::cout << "*";
+    std::cout << std::endl;
 }
 
-void Printer::print_suite_result()
+void Harness::print_suite_result() const
 {
     for (int i = 0; i < width; i++)
         std::cout << "-";
@@ -54,7 +60,7 @@ void Printer::print_suite_result()
              << " Failed: " << m_tests - m_passed << std::endl;
 }
 
-void Printer::run_test(bool (*test_function)(), const char *name)
+void Harness::run_test(bool (*test_function)(), const char *name)
 {
     print_test_result(test_function(), name);
 }

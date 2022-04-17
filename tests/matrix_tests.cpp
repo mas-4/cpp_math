@@ -4,7 +4,7 @@
 #include <iostream>
 #include "matrix_tests.h"
 #include "matrix.h"
-#include "printer.h"
+#include "harness.h"
 
 bool test_matrix_instantiation()
 {
@@ -164,7 +164,7 @@ bool test_scalar_multiplication()
 
 void matrix_tests()
 {
-    Printer printer = Printer();
+    Harness printer = Harness();
     printer.print_test_suite_name("Matrix tests");
     printer.run_test(test_matrix_instantiation, "Matrix instantiation");
     printer.run_test(
