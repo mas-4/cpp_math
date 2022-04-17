@@ -6,6 +6,7 @@
 #include <iostream>
 #include "trig_tests.h"
 #include "trig.h"
+#include "printer.h"
 
 bool test_cosine() {
     bool success = true;
@@ -22,5 +23,6 @@ bool test_cosine() {
 }
 
 void trig_tests() {
-    printf("Cosine\t\t%s\n", test_cosine() ? "PASS" : "FAIL");
+    Printer::print_test_suite_name("Trig Tests");
+    Printer::print_test_result(test_cosine(), "Cosine");
 }

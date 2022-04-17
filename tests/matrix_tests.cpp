@@ -4,6 +4,7 @@
 #include <iostream>
 #include "matrix_tests.h"
 #include "matrix.h"
+#include "printer.h"
 
 bool test_matrix_instantiation()
 {
@@ -158,22 +159,11 @@ bool test_scalar_multiplication() {
 }
 
 void matrix_tests() {
-    printf("%s\t\t\t\t%s\n",
-           "Matrix instantiation:",
-           test_matrix_instantiation () ? "PASS" : "FAIL");
-    printf("%s\t\t%s\n",
-           "Matrix instantiation with data:",
-           test_matrix_instantiation_w_data() ? "PASS" : "FAIL");
-    printf("%s\t\t\t\t\t%s\n",
-           "Matrix addition:",
-           test_matrix_addition() ? "PASS" : "FAIL");
-    printf("%s\t\t\t\t\t%s\n",
-           "Matrix subtraction:",
-           test_matrix_subtraction() ? "PASS" : "FAIL");
-    printf("%s\t\t\t\t%s\n",
-           "Matrix multiplication:",
-           test_matrix_multiplication() ? "PASS" : "FAIL");
-    printf("%s\t\t\t\t%s\n",
-           "Scalar multiplication:",
-           test_scalar_multiplication() ? "PASS" : "FAIL");
+    Printer::print_test_suite_name("Matrix tests");
+    Printer::print_test_result(test_matrix_instantiation(), "Matrix instantiation");
+    Printer::print_test_result(test_matrix_instantiation_w_data(), "Matrix instantiation with data");
+    Printer::print_test_result(test_matrix_addition(), "Matrix addition");
+    Printer::print_test_result(test_matrix_subtraction(), "Matrix subtraction");
+    Printer::print_test_result(test_matrix_multiplication(), "Matrix multiplication");
+    Printer::print_test_result(test_scalar_multiplication(), "Scalar multiplication");
 }

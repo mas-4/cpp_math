@@ -1,7 +1,7 @@
 project(test_module)
 
 set(SRCS
-        "matrix_tests.cpp" trig_tests.cpp trig_tests.h)
+        "matrix_tests.cpp" trig_tests.cpp trig_tests.h printer.cpp printer.h)
 
 add_library(test_module ${SRCS})
 target_link_libraries(test_module mathlib)
