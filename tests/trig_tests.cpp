@@ -25,6 +25,6 @@ bool test_cosine() {
 void trig_tests() {
     Printer printer = Printer();
     printer.print_test_suite_name("Trig Tests");
-    printer.print_test_result(test_cosine(), "Cosine");
+    printer.run_test(test_cosine, "Test cosine");
     printer.print_suite_result();
 }

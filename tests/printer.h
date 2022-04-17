@@ -19,6 +19,7 @@ public:
     void print_test_result(bool result);
     void print_test_result(bool result, const char *name);
     void print_suite_result();
+    void run_test(bool (*test_function)(), const char *name);
 };
 
 #endif //MS_MATH_PRINTER_H

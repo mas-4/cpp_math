@@ -53,3 +53,8 @@ void Printer::print_suite_result()
              << " Passed: " << m_passed
              << " Failed: " << m_tests - m_passed << std::endl;
 }
+
+void Printer::run_test(bool (*test_function)(), const char *name)
+{
+    print_test_result(test_function(), name);
+}
