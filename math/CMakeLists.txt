@@ -1,6 +1,6 @@
 project(mathlib)
 
 set(SRC
-        matrix.cpp)
+        matrix.cpp trig.cpp trig.h)
 
 add_library(mathlib ${SRC})
