@@ -6,7 +6,6 @@
 #include <iostream>
 #include "trig_tests.h"
 #include "trig.h"
-#include "harness.h"
 
 bool test_cosine() {
     bool success = true;
@@ -22,9 +21,10 @@ bool test_cosine() {
     return success;
 }
 
-void trig_tests() {
-    Harness printer = Harness();
-    printer.print_test_suite_name("Trig Tests");
-    printer.run_test(test_cosine, "Test cosine");
-    printer.print_suite_result();
+Harness trig_tests() {
+    Harness harness = Harness();
+    harness.print_test_suite_name("Trig Tests");
+    harness.run_test(test_cosine, "Test cosine");
+    harness.print_suite_result();
+    return harness;
 }

@@ -3,7 +3,6 @@
 //
 
 #include "test_funcs.h"
-#include "harness.h"
 #include "func.h"
 
 bool test_abs()
@@ -14,10 +13,11 @@ bool test_abs()
     return success;
 }
 
-void func_tests()
+Harness func_tests()
 {
     Harness harness = Harness();
     harness.print_test_suite_name("Function Tests");
     harness.run_test(test_abs, "abs");
     harness.print_suite_result();
+    return harness;
 }

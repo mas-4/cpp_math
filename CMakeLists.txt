@@ -8,4 +8,4 @@ add_subdirectory("tests")
 
 add_executable(ms_math main.cpp)
 target_link_libraries(ms_math test_module)
-target_include_directories(ms_math PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/math)
+target_include_directories(ms_math PUBLIC math)

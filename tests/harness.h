@@ -9,11 +9,10 @@
 class Harness
 {
 private:
-    static Harness *instance;
-    const int width = 80;
-    int m_tests = 0;
-    int m_passed = 0;
+    const int m_width = 80;
 public:
+    int m_total = 0;
+    int m_passed = 0;
     static void print_spaces(int spaces);
     void print_test_suite_name(const char *name) const;
     static void print_test_result(bool result);

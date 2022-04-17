@@ -4,7 +4,8 @@
 
 #ifndef MS_MATH_MATRIX_TESTS_H
 #define MS_MATH_MATRIX_TESTS_H
+#include "harness.h"
 
-void matrix_tests();
+Harness matrix_tests();
 
 #endif //MS_MATH_MATRIX_TESTS_H

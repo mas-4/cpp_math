@@ -5,6 +5,8 @@
 #ifndef MS_MATH_TRIG_TESTS_H
 #define MS_MATH_TRIG_TESTS_H
 
-void trig_tests();
+#include "harness.h"
+
+Harness trig_tests();
 
 #endif //MS_MATH_TRIG_TESTS_H

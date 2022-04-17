@@ -4,7 +4,6 @@
 #include <iostream>
 #include "matrix_tests.h"
 #include "matrix.h"
-#include "harness.h"
 
 bool test_matrix_instantiation()
 {
@@ -162,17 +161,18 @@ bool test_scalar_multiplication()
     return success;
 }
 
-void matrix_tests()
+Harness matrix_tests()
 {
-    Harness printer = Harness();
-    printer.print_test_suite_name("Matrix tests");
-    printer.run_test(test_matrix_instantiation, "Matrix instantiation");
-    printer.run_test(
+    Harness harness = Harness();
+    harness.print_test_suite_name("Matrix tests");
+    harness.run_test(test_matrix_instantiation, "Matrix instantiation");
+    harness.run_test(
             test_matrix_instantiation_w_data,
             "Matrix instantiation with data");
-    printer.run_test(test_matrix_addition, "Matrix addition");
-    printer.run_test(test_matrix_subtraction, "Matrix subtraction");
-    printer.run_test(test_matrix_multiplication, "Matrix multiplication");
-    printer.run_test(test_scalar_multiplication, "Scalar multiplication");
-    printer.print_suite_result();
+    harness.run_test(test_matrix_addition, "Matrix addition");
+    harness.run_test(test_matrix_subtraction, "Matrix subtraction");
+    harness.run_test(test_matrix_multiplication, "Matrix multiplication");
+    harness.run_test(test_scalar_multiplication, "Scalar multiplication");
+    harness.print_suite_result();
+    return harness;
 }

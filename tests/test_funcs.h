@@ -4,5 +4,8 @@
 
 #ifndef MS_MATH_TEST_FUNCS_H
 #define MS_MATH_TEST_FUNCS_H
-void func_tests();
+#include "harness.h"
+
+Harness func_tests();
+
 #endif //MS_MATH_TEST_FUNCS_H
