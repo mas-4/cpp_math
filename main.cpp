@@ -22,6 +22,6 @@ int main()
     std::cout << "Total tests: " << total_tests << std::endl;
     std::cout << "Total passed: " << total_passed << std::endl;
     std::cout << "Total failed: " << total_failed << std::endl;
-
-    return 0;
+    int exit_code = total_passed != total_tests;
+    return exit_code;
 }
