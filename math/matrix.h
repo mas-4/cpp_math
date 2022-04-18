@@ -83,7 +83,7 @@ public:
 
     Matrix &transpose();
 
-    Matrix &identity();
+    Matrix &identity() const;
 };
 
 #endif //MATH_MATRIX_H

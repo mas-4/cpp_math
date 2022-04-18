@@ -225,7 +225,7 @@ Matrix &Matrix::transpose()
     return *this;
 }
 
-Matrix &Matrix::identity()
+Matrix &Matrix::identity() const
 {
     if (rows != cols)
     {

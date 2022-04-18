@@ -11,6 +11,10 @@ namespace func
 
     double sqrt(double x);
 
+    double Q_rsqrt(double x);
+
+    double Q_sqrt(double x);
+
     double pow(double x, double y);
 
     double exp(double x);
