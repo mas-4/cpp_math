@@ -12,24 +12,31 @@ void Harness::print_spaces(int spaces)
         std::cout << " ";
 }
 
-void Harness::print_test_result(bool result)
+void Harness::print_test_result(bool result, bool error)
 {
     if (result)
         std::cout << "OK" << std::endl;
+    else if (error)
+        std::cout << "ERROR" << std::endl;
     else
         std::cout << "FAIL" << std::endl;
 }
 
-void Harness::print_test_result(bool result, const char *name)
+void Harness::print_test_result(bool result, bool error, const char *name)
 {
     m_total++;
+    if (result && error)
+        throw std::runtime_error("A test cannot both pass and error!");
     m_passed += result;
+    m_error += error;
     std::cout << name;
     // determine # of spaces to print
     int result_len = result ? 2 : 4;
+    if (error)
+        result_len = 5;
     int spaces_to_print = m_width - (int)strlen(name) - result_len;
     print_spaces(spaces_to_print);
-    print_test_result(result);
+    print_test_result(result, error);
 }
 
 void Harness::print_test_suite_name(const char *name) const
@@ -56,15 +63,16 @@ void Harness::print_suite_result() const
         std::cout << "-";
     std::cout << std::endl;
     std::cout << "Tests: " << m_total
-              << " Passed: " << m_passed
-              << " Failed: " << m_total - m_passed << std::endl;
+              << " | Passed: " << m_passed
+              << " | Error: " << m_error
+              << " | Failed: " << m_total - m_passed - m_error << std::endl;
 }
 
 void Harness::run_test(bool (*test_function)(), const char *name)
 {
     try {
-        print_test_result(test_function(), name);
+        print_test_result(test_function(), false, name);
     } catch (...) {
-        print_test_result(false, name);
+        print_test_result(false, true, name);
     }
 }
