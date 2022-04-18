@@ -63,3 +63,18 @@ double func::log(double x)
     throw std::invalid_argument("Not implemented");
     return 0;
 }
+
+fraction func::decompose(double x)
+{
+    return fraction();
+}
+
+long func::pow(long x, long y)
+{
+    long x2 = x;
+    for (long i = 1; i < y; i++)
+    {
+        x2 *= x;
+    }
+    return x2;
+}

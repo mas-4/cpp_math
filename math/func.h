@@ -5,6 +5,11 @@
 #ifndef MS_MATH_FUNC_H
 #define MS_MATH_FUNC_H
 
+struct fraction {
+    int num;
+    int den;
+};
+
 namespace func
 {
     double abs(double x);
@@ -14,6 +19,10 @@ namespace func
     double Q_rsqrt(double x);
 
     double Q_sqrt(double x);
+
+    fraction decompose(double x);
+
+    long pow(long x, long y);
 
     double pow(double x, double y);
 
