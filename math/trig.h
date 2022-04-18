@@ -6,6 +6,7 @@
 #define MS_MATH_TRIG_H
 
 #define PI 3.14159265358979323846
+#define PI_2 1.57079632679489661923
 #define N 10
 
 namespace trig {

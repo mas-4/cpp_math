@@ -21,10 +21,25 @@ bool test_cosine() {
     return success;
 }
 
+bool test_sine() {
+    bool success = true;
+    for (int i = 0; i < 360; i++) {
+        double angle = i * M_PI / 180;
+        double expected = sin(angle);
+        double actual = trig::sin(angle);
+        if (fabs(expected - actual) > 0.000001) {
+            printf("sin(%f) = %f, expected %f\n", angle, actual, expected);
+            success = false;
+        }
+    }
+    return success;
+}
+
 Harness trig_tests() {
     Harness harness = Harness();
     harness.print_test_suite_name("Trig Tests");
     harness.run_test(test_cosine, "Test cosine");
+    harness.run_test(test_sine, "Test sine");
     harness.print_suite_result();
     return harness;
 }

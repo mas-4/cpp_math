@@ -7,8 +7,8 @@
 
 double trig::sin(double x)
 {
-    throw std::invalid_argument("sin() not implemented");
-    return 0;
+    double sin_x = trig::cos(PI_2 - x);
+    return sin_x;
 }
 
 double trig::cos(double x) {

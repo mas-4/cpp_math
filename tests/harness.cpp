@@ -62,5 +62,9 @@ void Harness::print_suite_result() const
 
 void Harness::run_test(bool (*test_function)(), const char *name)
 {
-    print_test_result(test_function(), name);
+    try {
+        print_test_result(test_function(), name);
+    } catch (...) {
+        print_test_result(false, name);
+    }
 }
