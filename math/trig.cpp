@@ -31,66 +31,67 @@ double trig::cos(double x) {
 
 double trig::tan(double x)
 {
-    throw std::invalid_argument("sin() not implemented");
-    return 0;
+    // TODO use a first order algorithm instead of algebra
+    double tan_x = trig::sin(x) / trig::cos(x);
+    return tan_x;
 }
 
 double trig::asin(double x)
 {
-    throw std::invalid_argument("sin() not implemented");
+    throw std::invalid_argument("asin() not implemented");
     return 0;
 }
 
 double trig::acos(double x)
 {
-    throw std::invalid_argument("sin() not implemented");
+    throw std::invalid_argument("acos() not implemented");
     return 0;
 }
 
 double trig::atan(double x)
 {
-    throw std::invalid_argument("sin() not implemented");
+    throw std::invalid_argument("atan() not implemented");
     return 0;
 }
 
 double trig::atan2(double y, double x)
 {
-    throw std::invalid_argument("sin() not implemented");
+    throw std::invalid_argument("atan2() not implemented");
     return 0;
 }
 
 double trig::sinh(double x)
 {
-    throw std::invalid_argument("sin() not implemented");
+    throw std::invalid_argument("sinh() not implemented");
     return 0;
 }
 
 double trig::cosh(double x)
 {
-    throw std::invalid_argument("sin() not implemented");
+    throw std::invalid_argument("cosh() not implemented");
     return 0;
 }
 
 double trig::tanh(double x)
 {
-    throw std::invalid_argument("sin() not implemented");
+    throw std::invalid_argument("tanh() not implemented");
     return 0;
 }
 
 double trig::asinh(double x)
 {
-    throw std::invalid_argument("sin() not implemented");
+    throw std::invalid_argument("asinh() not implemented");
     return 0;
 }
 
 double trig::acosh(double x)
 {
-    throw std::invalid_argument("sin() not implemented");
+    throw std::invalid_argument("acosh() not implemented");
     return 0;
 }
 
 double trig::atanh(double x)
 {
-    throw std::invalid_argument("sin() not implemented");
+    throw std::invalid_argument("atanh() not implemented");
     return 0;
 }
