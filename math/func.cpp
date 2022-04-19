@@ -3,6 +3,7 @@
 //
 
 #include <stdexcept>
+#include <limits>
 #include "func.h"
 
 double func::abs(double x)
@@ -18,8 +19,13 @@ double func::sqrt(double x)
         return 0;
     double xn = x;
     double eps = 1e-15;
-    while ((xn * xn - x) > eps)
+    double last = xn;
+    while ((xn * xn - x) > eps) {
+        last = xn;
         xn = (xn + (x / xn)) / 2;
+        if (xn == last) // sometimes convergence is not reached
+            break;
+    }
     return xn;
 }
 
@@ -37,14 +43,17 @@ double func::Q_rsqrt(double number)
     i  = 0x5f3759df - ( i >> 1 );               // what the fuck?
     y  = * ( double * ) &i;
     y  = y * ( threehalfs - ( x2 * y * y ) );   // 1st iteration
-    // y  = y * ( threehalfs - ( x2 * y * y ) );   // 2nd iteration, this can be removed
+    y  = y * ( threehalfs - ( x2 * y * y ) );   // 2nd iteration, this can be removed
     return y;
 }
 
 double func::Q_sqrt(double number)
 {
     // Hey, Copilot figured out how to do a reciprocal.
-    return 1.0 / Q_rsqrt(number);
+    double q_rsqrt = func::Q_rsqrt(number);
+    if (q_rsqrt == 0)
+        return 0;
+    return 1.0 / q_rsqrt;
 }
 
 double func::pow(double x, double y)

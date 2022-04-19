@@ -23,7 +23,7 @@ int main()
         std::cout << '=';
     std::cout << std::endl;
     std::cout << "Total passed:         " << total_passed << std::endl;
-    std::cout << "Total errored:        " << total_passed << std::endl;
+    std::cout << "Total errored:        " << total_errored << std::endl;
     std::cout << "Total failed:         " << total_failed << std::endl;
     std::cout << "Total tests:          " << total_tests << std::endl;
     int exit_code = total_passed != total_tests;
