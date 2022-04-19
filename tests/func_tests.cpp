@@ -132,14 +132,11 @@ bool test_pow_double()
     {
         double a = func::pow(i, i);
         double b = std::pow(i, i);
-        tmp = func::abs(a - b) < 1e-15;
+        tmp = func::abs(a - b) < 1e-5;
         success &= tmp;
         if (!tmp)
         {
-            printf("pow(%f, %f) = %f, std::pow(%f, %f) = %f, diff = %f\n",
-                   i, i, a,
-                   i, i, b,
-                   a - b);
+            printf("pow(%f, %f) diff = %.*f\n", i, i, a - b);
         }
     }
     return success;

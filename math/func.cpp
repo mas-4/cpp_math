@@ -72,7 +72,7 @@ double func::pow(double x, double y)
     {
         return 1;
     }
-    return y * func::ln(x);
+    return func::exp(y * func::ln(x));
 }
 
 double func::exp(double x)
@@ -92,7 +92,7 @@ double func::exp(double x)
         power *= x;
         factorial *= i;
         sum += power / factorial;
-        if (sum == lastn)
+        if (func::abs(sum -lastn) < 1e-15)
         {
             return sum;
         } else if (sum == inf)
