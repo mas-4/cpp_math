@@ -2,7 +2,8 @@
 // Created by mas on 4/17/22.
 //
 
-#include "test_funcs.h"
+#include <valarray>
+#include "func_tests.h"
 #include "func.h"
 
 bool test_abs()
@@ -42,12 +43,10 @@ bool test_Q_rsqrt()
 bool test_sqrt()
 {
     bool success = func::sqrt(1) == 1;
-    success &= func::sqrt(2) == 1.4142135623730951;
-    success &= func::sqrt(3) == 1.7320508075688772;
-    success &= func::sqrt(4) == 2;
-    success &= func::sqrt(5) == 2.23606797749979;
-    success &= func::sqrt(6) == 2.449489742783178;
-    success &= func::sqrt(7) == 2.6457513110645907;
+    double x2[]{2, 3, 4, 5, 6, 7};
+    for (double x : x2) {
+        success &= (func::sqrt(x) - std::sqrt(x)) < 1e-15;
+    }
     return success;
 }
 
@@ -62,6 +61,13 @@ bool test_pow_long()
     return success;
 }
 
+bool test_polynomial()
+{
+    double coeffs[] = {1, 2, 3, 4, 5};
+    bool success = func::polynomial(2, coeffs, 5) == 129;
+    return success;
+}
+
 Harness func_tests()
 {
     Harness harness = Harness();
@@ -71,6 +77,7 @@ Harness func_tests()
     harness.run_test(test_Q_rsqrt, "Q_rsqrt");
     harness.run_test(test_sqrt, "sqrt");
     harness.run_test(test_pow_long, "pow_long");
+    harness.run_test(test_polynomial, "polynomial");
     harness.print_suite_result();
     return harness;
 }

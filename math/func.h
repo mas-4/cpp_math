@@ -31,6 +31,8 @@ namespace func
     double ln(double x);
 
     double log(double x);
+
+    double polynomial(double x, const double *coeffs, int n);
 }
 
 #endif //MS_MATH_FUNC_H

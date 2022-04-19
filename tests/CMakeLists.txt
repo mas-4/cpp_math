@@ -4,7 +4,7 @@ set(SRCS
         "matrix_tests.cpp"
         "trig_tests.cpp"
         "harness.cpp"
-        "test_funcs.cpp")
+        "func_tests.cpp")
 
 add_library(test_module ${SRCS})
 target_link_libraries(test_module mathlib)

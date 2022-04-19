@@ -57,12 +57,11 @@ bool test_tangent() {
 
 bool test_asin() {
     bool success = true;
-    for (int i = 1; i < 359; i++) {
-        double angle = i * M_PI / 180;
-        double expected = asin(angle);
-        double actual = trig::asin(angle);
+    for (double i = -1.0; i < 1.0; i+=0.1) {
+        double expected = asin(i);
+        double actual = trig::asin(i);
         if (fabs(expected - actual) > 0.000001) {
-            printf("asin(%f) = %f, expected %f\n", angle, actual, expected);
+            printf("asin(%f) = %f, expected %f\n", i, actual, expected);
             success = false;
         }
     }
@@ -71,8 +70,8 @@ bool test_asin() {
 
 bool test_acos() {
     bool success = true;
-    for (int i = 0; i < 360; i++) {
-        double angle = i * M_PI / 180;
+    for (double i = -1.0; i < 1.0; i+=0.1) {
+        double angle = i;
         double expected = acos(angle);
         double actual = trig::acos(angle);
         if (fabs(expected - actual) > 0.000001) {
@@ -85,12 +84,11 @@ bool test_acos() {
 
 bool test_atan() {
     bool success = true;
-    for (int i = 0; i < 360; i++) {
-        double angle = i * M_PI / 180;
-        double expected = atan(angle);
-        double actual = trig::atan(angle);
-        if (fabs(expected - actual) > 0.000001) {
-            printf("atan(%f) = %f, expected %f\n", angle, actual, expected);
+    for (double i = -1.0; i < 1.0; i+= 0.1) {
+        double actual = trig::atan(i);
+        double expected = atan(i);
+        if (fabs(expected - actual) > 0.00001) {
+            printf("atan(%f) = %f, expected %f\n", i, actual, expected);
             success = false;
         }
     }

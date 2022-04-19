@@ -2,7 +2,7 @@
 
 #include "tests/matrix_tests.h"
 #include "tests/trig_tests.h"
-#include "tests/test_funcs.h"
+#include "tests/func_tests.h"
 
 int main()
 {

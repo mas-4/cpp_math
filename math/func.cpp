@@ -12,8 +12,15 @@ double func::abs(double x)
 
 double func::sqrt(double x)
 {
-    throw std::invalid_argument("Not implemented");
-    return 0;
+    if (x < 0)
+        throw std::invalid_argument("sqrt: negative argument");
+    if (x == 0)
+        return 0;
+    double xn = x;
+    double eps = 1e-15;
+    while ((xn * xn - x) > eps)
+        xn = (xn + (x / xn)) / 2;
+    return xn;
 }
 
 double func::Q_rsqrt(double number)
@@ -66,6 +73,7 @@ double func::log(double x)
 
 fraction func::decompose(double x)
 {
+    throw std::invalid_argument("Not implemented");
     return fraction();
 }
 
@@ -77,4 +85,16 @@ long func::pow(long x, long y)
         x2 *= x;
     }
     return x2;
+}
+
+double func::polynomial(double x, const double *coeffs, int n)
+{
+    double y = 0;
+    double x2 = 1;
+    for (int i = 0; i < n; i++)
+    {
+        y += coeffs[i] * x2;
+        x2 *= x;
+    }
+    return y;
 }
