@@ -82,16 +82,35 @@ bool test_polynomial()
     return success;
 }
 
+bool test_exp()
+{
+    bool success = func::exp(0) == 1;
+    for (int i = 1; i < 100; i++) {
+        bool tmp = (func::exp(i) - std::exp(i)) < 1e-15;
+        success &= tmp;
+        if (!tmp) {
+            printf("exp(%d) = %.*f, std::exp(%d) = %.*f, diff = %.*f\n",
+                   i, 15, func::exp(i),
+                   i, 15, std::exp(i),
+                   15, func::exp(i) - std::exp(i));
+        }
+    }
+    return success;
+}
+
 Harness func_tests()
 {
     Harness harness = Harness();
     harness.print_test_suite_name("Function Tests");
     harness.run_test(test_abs, "abs");
-    // harness.run_test(test_Q_sqrt, "Q_sqrt");
-    // harness.run_test(test_Q_rsqrt, "Q_rsqrt");
     harness.run_test(test_sqrt, "sqrt");
     harness.run_test(test_pow_long, "pow_long");
     harness.run_test(test_polynomial, "polynomial");
+    harness.run_test(test_exp, "exp");
+    /* Expect failure
+    harness.run_test(test_Q_sqrt, "Q_sqrt");
+    harness.run_test(test_Q_rsqrt, "Q_rsqrt");
+     */
     harness.print_suite_result();
     return harness;
 }

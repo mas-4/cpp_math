@@ -11,6 +11,10 @@ double func::abs(double x)
     return x > 0 ? x : -x;
 }
 
+double taylor(double x, int n)
+{
+}
+
 double func::sqrt(double x)
 {
     if (x < 0)
@@ -64,8 +68,17 @@ double func::pow(double x, double y)
 
 double func::exp(double x)
 {
-    throw std::invalid_argument("Not implemented");
-    return 0;
+    if (x == 0)
+        return 1;
+    double factorial = 1;
+    double power = 1;
+    double sum = 1;
+    for (int i = 1; i < 21; i++) {
+        power *= x;
+        factorial *= i;
+        sum += power / factorial;
+    }
+    return sum;
 }
 
 double func::ln(double x)
@@ -83,7 +96,6 @@ double func::log(double x)
 fraction func::decompose(double x)
 {
     throw std::invalid_argument("Not implemented");
-    return fraction();
 }
 
 long func::pow(long x, long y)
