@@ -11,10 +11,6 @@ double func::abs(double x)
     return x > 0 ? x : -x;
 }
 
-double taylor(double x, int n)
-{
-}
-
 double func::sqrt(double x)
 {
     if (x < 0)
@@ -72,8 +68,11 @@ double func::Q_sqrt(double number)
 
 double func::pow(double x, double y)
 {
-    throw std::invalid_argument("Not implemented");
-    return 0;
+    if (y == 0)
+    {
+        return 1;
+    }
+    return y * func::ln(x);
 }
 
 double func::exp(double x)

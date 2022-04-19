@@ -124,6 +124,27 @@ bool test_ln()
     return success;
 }
 
+bool test_pow_double()
+{
+    bool success = true;
+    bool tmp = true;
+    for (double i = 0; i < 10; i+=0.5)
+    {
+        double a = func::pow(i, i);
+        double b = std::pow(i, i);
+        tmp = func::abs(a - b) < 1e-15;
+        success &= tmp;
+        if (!tmp)
+        {
+            printf("pow(%f, %f) = %f, std::pow(%f, %f) = %f, diff = %f\n",
+                   i, i, a,
+                   i, i, b,
+                   a - b);
+        }
+    }
+    return success;
+}
+
 Harness func_tests()
 {
     Harness harness = Harness();
@@ -134,6 +155,7 @@ Harness func_tests()
     harness.run_test(test_polynomial, "polynomial");
     harness.run_test(test_exp, "exp");
     harness.run_test(test_ln, "ln");
+    harness.run_test(test_pow_double, "pow_double");
     /* Expect failure
     harness.run_test(test_Q_sqrt, "Q_sqrt");
     harness.run_test(test_Q_rsqrt, "Q_rsqrt");
